@@ -1,16 +1,50 @@
-# Landing Page Project
+# Project Title
 
-## Table of Contents
+# Demo-Preview
 
-* [Instructions](#instructions)
+# Table of contents
 
-## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+- [Project Title](#project-title)
+- [Demo-Preview](#demo-preview)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Contribute](#contribute)
+    - [Sponsor](#sponsor)
+    - [Adding new features or fixing bugs](#adding-new-features-or-fixing-bugs)
+- [License](#license)
+- [Footer](#footer)
 
-To get started, open `js/app.js` and start building out the app's functionality
+# Installation
+[(Back to top)](#table-of-contents)
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+# Usage
+[(Back to top)](#table-of-contents)
+
+# Development
+[(Back to top)](#table-of-contents)
+
+# Contribute
+[(Back to top)](#table-of-contents)
+
+### Sponsor
+[(Back to top)](#table-of-contents)
+
+### Adding new features or fixing bugs
+[(Back to top)](#table-of-contents)
+
+# License
+[(Back to top)](#table-of-contents)
+
+# Footer
+[(Back to top)](#table-of-contents)
+
+
+DOMContentLoaded: 113 ms
+
+
 
 ![image](https://user-images.githubusercontent.com/66916141/148701332-45f9667e-193f-42d8-b784-20d5372597f6.png)
 ![image](https://user-images.githubusercontent.com/66916141/148701351-922bebee-21f4-4bca-8b72-fab6072a38f5.png)
