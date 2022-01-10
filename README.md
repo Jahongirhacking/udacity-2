@@ -13,4 +13,4 @@
 ## Adding new features or fixing bugs
 * DOMContentLoaded: **113 ms** by using `DocumentFragment`
 * I changed some colours and created my own design
-* In order to see your own sections on this landing page, I added a new function called "Write Your Own Section". And you may write your articles, then you can send to see them on the page above!
+* In order to see your own sections on this landing page, I added a new function called **"Write Your Own Section"**. And you may write your articles, then you can send to see them on the page above!
