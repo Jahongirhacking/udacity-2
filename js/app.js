@@ -175,9 +175,9 @@ function moreOrLess(e){
  * New Section
 */
 
-var newSectionNum=6;
-
 function newSection(e){
+    // New Section ID number
+    const newSectionNum=document.querySelectorAll("main>section").length+1;
     // Section Element
     e.preventDefault();
     const section=document.createElement("section");
@@ -210,9 +210,8 @@ function newSection(e){
     document.querySelector("form>#about").value="";
     // Recreate Navigation
     buildNav();
-    // New content ID increase by 1
-    newSectionNum++;
 }
 // Button of the form to send the information
 const sendButton=document.querySelector("form>button");
 sendButton.addEventListener("click",newSection);
+
