@@ -22,13 +22,9 @@ toTop.style.visibility="hidden";
  * Define Global Variables
  * 
 */
-var activeSection="";
-var ulNav=document.getElementById("navbar__list");
-var main=document.querySelector("main");
-var header=document.querySelector("header");
-var newSectionNum=6;
-
-
+const ulNav=document.getElementById("navbar__list");
+const main=document.querySelector("main");
+const header=document.querySelector("header");
 
 /**
  * End Global Variables
@@ -57,6 +53,7 @@ function isTopVw(element) {
 function buildNav(){
     ulNav.innerHTML="";
     const sections=document.querySelectorAll("main>section");
+    const fragment=document.createDocumentFragment();
     for(let section of sections){
         const list=document.createElement("li");
         //for link
@@ -65,15 +62,16 @@ function buildNav(){
         link.setAttribute("href","#"+section.id);
         link.textContent=section.getAttribute("data-nav");
         link.addEventListener("click",scrollToAnchor);
-        ////
+        ////Append
         list.appendChild(link);
-        ulNav.appendChild(list);
+        fragment.appendChild(list);
 
         //more or less
         const icon=section.querySelector("h2>i");
         icon.classList.add("more");
         icon.addEventListener("click", moreOrLess, true);
     }
+    ulNav.appendChild(fragment);
 }
 
 buildNav();
@@ -161,13 +159,15 @@ function moreOrLess(e){
 
 
 // New Section
+var newSectionNum=6;
+
 function newSection(e){
     e.preventDefault();
-    let section=document.createElement("section");
+    const section=document.createElement("section");
     section.id=`section${newSectionNum}`;
 
     section.setAttribute("data-nav",`Section ${newSectionNum}`);
-    let div=document.createElement("div");
+    const div=document.createElement("div");
     div.className="landing__container";
 
     const heading=document.createElement("h2");
