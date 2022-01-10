@@ -49,28 +49,36 @@ function isTopVw(element) {
  * 
 */
 
-// build the nav
+// build the navigation
 function buildNav(){
+    // Clear the navigation ul for next use
     ulNav.innerHTML="";
     const sections=document.querySelectorAll("main>section");
     const fragment=document.createDocumentFragment();
+    // Iterate through each section
     for(let section of sections){
+        //* Creating the navigation */
         const list=document.createElement("li");
-        //for link
+        // Link to call appropriate section
+        // Link's information
         const link=document.createElement("a");
         link.className="menu__link";
         link.setAttribute("href","#"+section.id);
         link.textContent=section.getAttribute("data-nav");
+        // When the link is clicked
         link.addEventListener("click",scrollToAnchor);
-        ////Append
+        // Using Fragment to boost speed
         list.appendChild(link);
         fragment.appendChild(list);
 
-        //more or less
+        //* Add plus or minus icon to collapse for new sections */
+        // In order not to write the same code 2 times, I wrote here
+        // more or less
         const icon=section.querySelector("h2>i");
         icon.classList.add("more");
         icon.addEventListener("click", moreOrLess, true);
     }
+    // Append the DocumentFragment so that the browser shows
     ulNav.appendChild(fragment);
 }
 
@@ -80,7 +88,9 @@ buildNav();
 function beActive(){
     //active class
     const sections=document.querySelectorAll("main>section");
+    // Check for each section whether it is on top of the viewport
     for(let section of sections){
+        //call the function
         if(isTopVw(section)){
             section.classList.add("active");
         }else{
@@ -91,8 +101,11 @@ function beActive(){
 
 // Scroll to anchor ID using scrollBy event
 function scrollToAnchor(e){
+    // Prevent the Default actions
     e.preventDefault();
     const y=document.querySelector(e.target.getAttribute("href")).getBoundingClientRect()["y"];
+    // There is an element on top of the window when it is scrolled by its y axis value
+    // and scroll will be smooth
     window.scrollBy({
         top: y,
         left: 0, 
@@ -107,7 +120,7 @@ function scrollToAnchor(e){
  * Events
 */
 
-
+//When there is a scroll on document then:
 document.addEventListener("scroll",(e)=>{
     //hide navigation
     header.style.visibility="hidden";
@@ -115,12 +128,12 @@ document.addEventListener("scroll",(e)=>{
         header.style.visibility="visible";
     },500);
 
-    //toTop button 
+    //toTop button active when:
     const toTop=document.getElementById("toTop");
     if(document.body.scrollTop>100) toTop.style.visibility="visible";
     else toTop.style.visibility="hidden";
     
-    //Make Active
+    //Make Active the Section by adding "active" to its class
     beActive();    
 });
 
@@ -136,16 +149,20 @@ document.querySelector("#toTop").addEventListener("click",(e)=>{
     });
 })
 
-//More or Less Content
+// More or Less Content
+// Collapse the content
 function moreOrLess(e){
     const landing_container=e.target.parentElement.parentElement;
     if(e.target.className.search("more")>=0){
+        // Collapse the section
+        // Plus icon
         e.target.className="far fa-plus-square less";
         landing_container.classList.remove("landing_more");
         landing_container.classList.add("landing_less");
         landing_container.parentElement.style.minHeight="190px";
-        
     }else{
+        // Return to original
+        // Minus icon
         e.target.className="far fa-minus-square more";
         landing_container.classList.remove("landing_less");
         landing_container.classList.add("landing_more");
@@ -153,32 +170,32 @@ function moreOrLess(e){
     }
 }
 
-// Build menu 
+/**
+ * Write your own section
+ * New Section
+*/
 
-// Scroll to section on link click
-
-
-// New Section
 var newSectionNum=6;
 
 function newSection(e){
+    // Section Element
     e.preventDefault();
     const section=document.createElement("section");
     section.id=`section${newSectionNum}`;
-
     section.setAttribute("data-nav",`Section ${newSectionNum}`);
+    // Div Element
     const div=document.createElement("div");
     div.className="landing__container";
-
+    // h2 element for heading
     const heading=document.createElement("h2");
     heading.textContent=document.querySelector("form>#heading").value+" ";
     heading.innerHTML+=`<i class="far fa-minus-square"></i>`;
-
+    // both p elements for body and about-author, respectively
     const p1=document.createElement("p");
     p1.textContent=document.querySelector("form>#body").value;
     const p2=document.createElement("p");
     p2.textContent=document.querySelector("form>#about").value;
-
+    // Append elements so that the browser shows
     div.appendChild(heading);
     div.appendChild(p1);
     div.appendChild(p2);
@@ -186,16 +203,16 @@ function newSection(e){
     main.appendChild(section);
 
 
-    //Update the content
-
+    // Update the content
+    // Update the form
     document.querySelector("form>#heading").value="";
     document.querySelector("form>#body").value="";
     document.querySelector("form>#about").value="";
-    
+    // Recreate Navigation
     buildNav();
+    // New content ID increase by 1
     newSectionNum++;
 }
-
+// Button of the form to send the information
 const sendButton=document.querySelector("form>button");
 sendButton.addEventListener("click",newSection);
-
