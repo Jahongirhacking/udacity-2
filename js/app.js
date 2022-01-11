@@ -37,7 +37,7 @@ function isTopVw(element) {
     const top_cordinate = element.getBoundingClientRect().top;
     // return true if the element top is near the top of the viewport, false otherwise
     return (
-        top_cordinate >= -10 && top_cordinate <= 0.4 * (window.innerHeight || document.documentElement.clientHeight)
+        top_cordinate >= -100 && top_cordinate <= 0.4 * (window.innerHeight || document.documentElement.clientHeight)
     );
 }
 
@@ -63,6 +63,7 @@ function buildNav(){
         // Link's information
         const link=document.createElement("a");
         link.className="menu__link";
+        // To navigate which section when anchor
         link.setAttribute("href","#"+section.id);
         link.textContent=section.getAttribute("data-nav");
         // When the link is clicked
@@ -90,11 +91,15 @@ function beActive(){
     const sections=document.querySelectorAll("main>section");
     // Check for each section whether it is on top of the viewport
     for(let section of sections){
+        // find the appropriate nav list
+        const  navItem=document.querySelector(`#navbar__list>li>a[href="#${section.id}"]`);
         //call the function
         if(isTopVw(section)){
             section.classList.add("active");
+            navItem.classList.add("menu__link--active");
         }else{
             section.classList.remove("active");
+            navItem.classList.remove("menu__link--active");
         }
     }
 }
@@ -214,4 +219,3 @@ function newSection(e){
 // Button of the form to send the information
 const sendButton=document.querySelector("form>button");
 sendButton.addEventListener("click",newSection);
-
